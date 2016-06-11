@@ -78,6 +78,26 @@ $result = mysqli_query($dbConn, $baseSql);
                         <h2 class="text-center">Tractor search results</h2>
                     </div>
                     <div class="col-sm-12" id="searchResults">
+        <?php 
+            if (mysqli_num_rows($result) > 0 ) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                        <div class="col-sm-4" style="float:left; background-color: lightsalmon; ">
+                            <div class="col-md-12" style="background-color: #fff; padding: 10px; margin: 5px;border: 1px solid grey;">
+                                <img src="images/s_img_new.png" width="300" height="230" alt="tractor" class="img-responsive"/>
+                                Brand : <?php echo $row['tractor_brand']; ?><br />
+                                Horse Power : <?php echo $row['horse_power']; ?><br />
+                                MRP : <?php echo $row['base_mrp']; ?>
+                            </div>
+                        </div>
+            <?php 
+            } 
+            } else {
+                ?>
+                        <h2 class="text-center">Sorry! No data found for your search</h2>
+<?php            }
+        ?>
+        </script>
                         
                     </div>
                 </div>
@@ -85,34 +105,4 @@ $result = mysqli_query($dbConn, $baseSql);
         </div>
     </body>
     <script>
-        <?php 
-            if (mysqli_num_rows($result) > 0 ) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                    var holder = document.getElementById("searchResults");
-                    div = document.createElement("div");
-                    div.appendChild(document.createTextNode("Tractor1"));
-                    br = document.createElement("br");
-                    div.style.border = "1px solid black";
-                    div.style.cssFloat = "left";
-                    div.style.height = "200px";
-                    div.className = "col-sm-4";
-                    div.appendChild(document.createTextNode("--MRP : "+<?php echo $row['base_mrp']?>));
-                    div.appendChild(document.createTextNode("--Brand : "+<?php echo "'".$row['tractor_brand']."'"?>));
-                    div.appendChild(document.createTextNode("--Horse Power : "+<?php echo $row['horse_power']?>));
-                    holder.appendChild(div);
-                    <?php
-            }
-            } else {
-                ?>
-              var holder = document.getElementById("searchResults");
-              
-            div = document.createElement("div");
-            div.appendChild(document.createTextNode("Sorry! No data found"));
-            div.style.textAlign = "center";
-            holder.appendChild(div);
-            
-<?php            }
-        ?>
-        </script>
 </html>
