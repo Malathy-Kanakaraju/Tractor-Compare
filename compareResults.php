@@ -17,10 +17,10 @@ if (isset($_POST['budget']) && $_POST['budget'] !== 'null') {
             $budget = "base_mrp < 300000 ";
             break;
         case '3lt5l':
-            $budget = "base_mrp BETWEEN 30000 AND 50000 ";
+            $budget = "base_mrp BETWEEN 300000 AND 500000 ";
             break;
         case '5lt10l':
-            $budget = "base_mrp BETWEEN 50000 AND 10000 ";
+            $budget = "base_mrp BETWEEN 500000 AND 1000000 ";
             break;
     }
     $conditionStatement[] = $budget;
