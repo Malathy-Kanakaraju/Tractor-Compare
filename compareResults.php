@@ -61,13 +61,17 @@ $result = mysqli_query($dbConn, $baseSql);
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tractor Comparison Results</title>
-        <!-- Latest compiled and minified CSS -->
+<!--
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-        <!-- Latest compiled JavaScript -->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        
+-->        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="js/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
         
     </head>
     <body>
@@ -77,15 +81,15 @@ $result = mysqli_query($dbConn, $baseSql);
                     <div class="header">
                         <h2 class="text-center">Tractor search results</h2>
                     </div>
-                    <div class="col-sm-12" id="searchResults">
+                    <div class="col-sm-12" id="searchResults" style=" background-color: lightgray; ">
         <?php 
             if (mysqli_num_rows($result) > 0 ) {
             while ($row = mysqli_fetch_assoc($result)) {
                 ?>
-                        <div class="col-sm-4" style="float:left; background-color: lightsalmon; ">
+                        <div class="col-sm-4" style="float:left;">
                             <div class="col-md-12" style="background-color: #fff; padding: 10px; margin: 5px;border: 1px solid grey;">
                                 <img src="images/s_img_new.png" width="300" height="230" alt="tractor" class="img-responsive"/>
-                                Brand : <?php echo $row['tractor_brand']; ?><br />
+                                <a href="showData.php?id=<?php echo $row['tractor_id']?>"><?php echo $row['tractor_brand']; ?></a><br />
                                 Horse Power : <?php echo $row['horse_power']; ?><br />
                                 MRP : <?php echo $row['base_mrp']; ?>
                             </div>
